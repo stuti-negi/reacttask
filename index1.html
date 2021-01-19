@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<select id="arr"></select> 
+<p id="demo">Fetch a file to change this text.</p>
+
+<script>
+
+
+
+fetch('https://cors-anywhere.herokuapp.com/'+'https://www.google.com/basepages/producttype/taxonomy-with-ids.en-US.txt')
+.then((response) => response.text())
+.then(y =>{
+xa=y.split('\n');
+
+// var newarray = xa.map(myFunction)
+
+	// function myFunction(num) {
+	//   return "<br>"+num.split(">");
+	// }
+
+// document.getElementById("demo").innerHTML = newarray;
+for (var i = 0; i < xa.length; i++) { 
+                var optn = xa[i]; 
+                var el = document.createElement("option"); 
+                el.textContent = optn; 
+                el.value = optn; 
+                document.getElementById("arr").appendChild(el);} 
+// document.getElementById("demo").innerHTML = xa
+});
+// console.log(x);
+
+</script>
+</body>
+</html>

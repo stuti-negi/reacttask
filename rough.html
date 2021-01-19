@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<select id="arr"></select> 
+<p id="authors">Fetch a file to change this text.</p>
+<p id="demo">Fetch a file to change this text.</p>
+
+<script>
+function createNode(element) {
+    return document.createElement(element);
+}
+
+function append(parent, el) {
+  return parent.appendChild(el);
+}
+
+const ul = document.getElementById('authors');
+const url = 'https://cors-anywhere.herokuapp.com/'+'https://www.google.com/basepages/producttype/taxonomy-with-ids.en-US.txt';
+
+fetch(url)
+.then((resp) => resp.text())
+.then(data => {
+  let authors = data.split('\n');
+  authors.shift();
+  var ul1=createNode('select');
+  var newarray = authors.map(myFunction)
+  function myFunction(v) {
+  	var ar=v.split(">");
+
+  	for (var i = 0; i < ar.length; i++) 
+  	{
+  		
+  		var optn = ar[i];
+  		// console.log(optn);
+    var li = createNode('option');
+    li.textContent = optn; 
+                li.value = optn; 
+    
+    }
+    append(ul1, li);
+    return append(ul, ul1);
+  }
+});
+
+</script>
+</body>
+</html>
